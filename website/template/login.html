@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'cdnlines.html' %}
+    <style>
+        form {
+            margin-top: 1px;
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        #div1 {
+            background-image: url();
+            background-size: cover;
+            position: fixed;
+        }
+
+        body {
+            /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr1m-EATvfcbILxqJoPycFdSGZrGSqKh_xSg&usqp=CAU'); */
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center">LYCOS SCHOOL</h1>
+    <hr size="5" color="black">
+    <div style="width: 65%; float: right;">
+        <form action="{% url 'login'  %}" method="POST" style="margin-top: 2px; width:400px; height:330px"
+            class="shadow-lg px-3 py-3"> {% csrf_token %}
+
+            <center>
+                <label>Username:</label>
+                <input type="text" placeholder="username" name="username" required class="form-control"><br><br>
+
+                <label>Password:</label>
+                <input type="password" placeholder="password" name="password" required class="form-control"><br><br>
+
+
+                <input type="submit" value="Login" class="btn bg-success text-white mr-3">
+                <input type="reset" value="Clear" class="btn bg-danger text-white ">
+
+
+                <div class="messages">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="text-center text-white alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </center>
+
+
+        </form>
+    </div>
+</body>
+
+</html>

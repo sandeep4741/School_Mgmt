@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+      color:white;
+
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-info navbar-dark fixed-top">
+      <a href="/" class="navbar-brand">SUPERINTENDENT</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between text-white" id="navbarCollapse">
+        <div class="navbar-nav text-white">
+
+          <a href="{% url 'super_studentdata'  %}" class="nav-item nav-link text-white">Student details</a>
+          <a href="{% url 'super_studentperform'  %}" class="nav-item nav-link text-white">Student Performance</a>
+          <a href="{% url 'super_teacherdata'  %}" class="nav-item nav-link text-white">Teacher details</a>
+
+
+        </div>
+        <div class="navbar-nav">
+          <a type="submit" href="{% url 'login' %}" class="nav-item nav-link text-white">Logout</a> </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <br><br><br><br>
+  <center>
+    {% if studentdata %}
+    <b>
+      <h1>STUDENT DETAILS</h1>
+    </b>
+    <table style="width:70%" cellpadding="10" class="table table-bordered">
+      <thead>
+        <th>Student</th>
+        <th>Class</th>
+        <th>RollNumber</th>
+        <th>DateOfBirth</th>
+        <th>Gender</th>
+        <th>Address</th>
+      </thead>
+      <tbody>
+        {% for i in studentdata %}
+        <tr>
+          <td>{{ i.Student_Name}}</td>
+          <td>{{ i.Class}}</td>
+          <td>{{ i.RollNumber}}</td>
+          <td>{{ i.DateOfBirth}}</td>
+          <td>{{ i.Gender}}</td>
+          <td>{{ i.Address}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {%endif %}
+
+      </tbody>
+    </table>
+  </center>
+
+  <!-- for teacher data -->
+
+  <center>
+    {% if teacherdata %}
+    <b>
+      <h1>TEACHER DETAILS</h1>
+    </b>
+
+    <table style="width:70%" cellpadding="10" class="table table-bordered">
+      <thead>
+        <th>Name</th>
+        <th>TeacherId</th>
+        <th>Qualification</th>
+        <th>DateOfJoining</th>
+        <th>Gender</th>
+        <th>Subject</th>
+      </thead>
+      <tbody>
+        {% for i in teacherdata %}
+        <tr>
+          <td>{{ i.Name}}</td>
+          <td>{{ i.TeacherId}}</td>
+          <td>{{ i.Qualification}}</td>
+          <td>{{ i.DateOfJoining}}</td>
+          <td>{{ i.Gender}}</td>
+          <td>{{ i.Subject}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {%endif %}
+
+      </tbody>
+    </table>
+  </center>
+
+
+  <!-- for student perfomance -->
+
+  <center>
+    {% if studentperform %}
+    <b>
+      <h1>STUDENT PERFORMANCE DETAILS</h1>
+    </b>
+
+    <table style="width:70%" cellpadding="10" class="table table-bordered">
+      <thead>
+        <th>StudentName</th>
+        <th>Class</th>
+        <th>RollNumber</th>
+        <th>Grade</th>
+        <th>Remarks</th>
+      </thead>
+      <tbody>
+        {% for i in studentperform %}
+        <tr>
+          <td>{{ i.Student_Name}}</td>
+          <td>{{ i.Class}}</td>
+          <td>{{ i.RollNumber}}</td>
+          <td>{{ i.Grade}}</td>
+          <td>{{ i.Remarks}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {%endif %}
+
+      </tbody>
+    </table>
+  </center>
+
+
+</body>
+
+</html>

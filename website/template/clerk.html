@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+
+    .div1 {
+      position: relative;
+      text-align: center;
+      color: green;
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    .text {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-info navbar-dark text-white fixed-top">
+      <a href="/" class="navbar-brand">Clerk</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" target="_self">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav text-white">
+          <a href="{% url 'studentdata_entry'  %}" class="nav-item nav-link text-white" type="submit">Add Student</a>
+          <a href="{% url 'teacherdata_entry' %}" class="nav-item nav-link text-white">Add Teacher</a>
+          <a href="{% url 'studentperform_entry' %}" class="nav-item nav-link text-white"> Add Student Performance </a>
+          <a href="{% url 'teacherperform_entry' %}" class="nav-item nav-link text-white">Add Teacher Performance</a>
+
+          <a href="{% url 'clerk_studentdata' %}" class="nav-item nav-link text-white">Student details</a>
+          <a href="{% url 'clerk_studentperform' %}" class="nav-item nav-link text-white">Student performance</a>
+
+
+        </div>
+        <div class="navbar-nav">
+          <a href="{% url 'login' %}" class="nav-item nav-link text-white">Logout</a>
+        </div>
+      </div>
+  </div>
+  </nav>
+  </div>
+  <!-- <div class="div1" style="width: 100%; float: left;">
+        <img src="https://www.drsinternational.com/wp-content/uploads/2021/10/DRSIS_Feature_img.jpg" style="width: 100%; height: 600px;">
+        <div class="text">lycos school</div>
+    </div> -->
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>Clerkdisplay</title>
+</head>
+
+<body>
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-info  fixed-top  text-white">
+      <a href="/" class="navbar-brand text-white">Clerk</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" target="_self">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a href="{% url 'clerk' %}" class="nav-item nav-link text-white">Go Back</a>
+
+        </div>
+        <div class="navbar-nav">
+          <a href="{% url 'login' %}" class="nav-item nav-link text-white">Logout</a>
+        </div>
+      </div>
+  </div>
+  </nav>
+  </div>
+  <br><br><br><br><br>
+
+  <!-- for student data -->
+
+  <center>
+    {% if studentdata %}
+    <b>
+      <h1>STUDENT DETAILS</h1>
+    </b>
+    <table style="width:70%" cellpadding="10" class="table table-bordered">
+      <thead>
+        <th>Student</th>
+        <th>Class</th>
+        <th>RollNumber</th>
+        <th>DateOfBirth</th>
+        <th>Gender</th>
+        <th>Address</th>
+      </thead>
+      <tbody>
+        {% for i in studentdata %}
+        <tr>
+          <td>{{ i.Student_Name}}</td>
+          <td>{{ i.Class}}</td>
+          <td>{{ i.RollNumber}}</td>
+          <td>{{ i.DateOfBirth}}</td>
+          <td>{{ i.Gender}}</td>
+          <td>{{ i.Address}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {%endif %}
+
+      </tbody>
+    </table>
+  </center>
+  <center>
+    {% if studentperform %}
+    <b>
+      <h1>STUDENT PERFORMANCE DETAILS</h1>
+    </b>
+
+    <table style="width:70%" cellpadding="10" class="table table-bordered">
+      <thead>
+        <th>StudentName</th>
+        <th>Class</th>
+        <th>RollNumber</th>
+        <th>Grade</th>
+        <th>Remarks</th>
+      </thead>
+      <tbody>
+        {% for i in studentperform %}
+        <tr>
+          <td>{{ i.Student_Name}}</td>
+          <td>{{ i.Class}}</td>
+          <td>{{ i.RollNumber}}</td>
+          <td>{{ i.Grade}}</td>
+          <td>{{ i.Remarks}}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        {%endif %}
+
+      </tbody>
+    </table>
+  </center>
+
+</body>
+
+</html>

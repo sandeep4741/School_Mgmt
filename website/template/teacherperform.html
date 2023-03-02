@@ -1,0 +1,140 @@
+<html>
+
+<head>
+  {% include 'cdnlines.html' %}
+  <style>
+    * {
+      margin: 0
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .container h1 {
+      font-family: sans-serif;
+      margin: 20px;
+      color: #6699cc;
+    }
+
+    .registartion-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 600px;
+      font-size: 18px;
+      font-family: sans-serif;
+      background-color:#42c2f5;
+      padding: 20px;
+    }
+
+    .registartion-form input,
+    .registartion-form select,
+    .registartion-form textarea {
+      border: none;
+      padding: 5px;
+      margin-top: 10px;
+      font-family: sans-serif;
+    }
+
+    .registartion-form input:focus,
+    .registartion-form textarea:focus {
+      box-shadow: 3px 3px 10px rgb(228, 228, 228), -3px -3px 10px rgb(224, 224, 224);
+    }
+
+    .registartion-form .submit {
+      width: 100%;
+      padding: 8px 0;
+      font-size: 20px;
+      color: rgb(44, 44, 44);
+      border-radius: 5px;
+    }
+
+    .text {
+      color: white;
+    }
+
+    .registartion-form .submit:hover {
+      box-shadow: 3px 3px 6px rgb(255, 214, 176);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-info fixed-top text-white">
+      <a href="/" class="navbar-brand text-white">Clerk</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" target="_self">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a href="{% url 'clerk' %}" class="nav-item nav-link text-white">Go Back</a>
+
+        </div>
+        <div class="navbar-nav">
+          <a href="{% url 'login' %}" class="nav-item nav-link text-white">Logout</a>
+        </div>
+      </div>
+  </div>
+  </nav>
+  </div>
+  <div class="container">
+    <h1>TEACHER PERFORMANCE</h1>
+    <form method='POST' class="registartion-form" onsubmit="return formValidation()">
+      {% csrf_token %}
+      <table class="text">
+        <tr>
+          <td><label for="name">Teacher Name:</label></td>
+          <td><input type="text" name="name" id="name" placeholder="teacher name" required></td>
+        </tr>
+        <tr>
+          <td><label for="Teacher_Id">Teacher Id:</label></td>
+          <td><input type="value" name="teacherid" id="name" placeholder="teacher id" required></td>
+        </tr>
+        <tr>
+          <td><label for="SUBJECT">Subject</label></td>
+          <td>
+            <select name="subject" id="language">
+              <option value="">Select Subject</option>
+              <option value="Telugu">Telugu</option>
+              <option value="Hindi">Hindi</option>
+              <option value="English">English</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Science">Science</option>
+              <option value="Social Science" required>Social Science</option>
+
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Remark">Remark:</label></td>
+          <td><input type="radio" name="remark" grade="remark" value="Good"> Good: 
+            <input type="radio" name="remark" grade="Remark" value="Bad" required> Bad: </td>
+        </tr>
+
+        <tr>
+          <center>
+            <td><button type="submit"> SUBMIT</button></td>
+          </center>
+        </tr>
+      </table>
+      {% for message in messages %}
+      {% if message.tags == 'error' %}
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+        m = '{{message}}';
+        swal("denied!", m, "error")
+      </script>
+      {% endif %}
+      {% endfor %}
+    </form>
+  </div>
+</body>
+
+</html>
